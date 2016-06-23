@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Untitled</title>
+<style type="text/css">
+body { font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
+</style>
+<script type="text/javascript">
+function testStuff() {
+    var id = window.frameElement.id;
+    this.form.display.value = 'The id is ' + id;
+}
+
+function testStuff2() {
+    this.form.display.value = 'counter in parent doc is now: ' + parent.counter++;
+}
+
+window.onload = function(){
+    var form = document.getElementById('ifrmTest');
+    form.testBtn1.onclick = testStuff;
+    form.testBtn2.onclick = testStuff2;
+};
+</script>
+</head>
+<body>
+
+<form action="#" id="ifrmTest">
+<p><input type="text" name="display" size="30" /></p>
+<p><input name="testBtn1" type="button" value="Click Me" /> to see id of iframe element containing this document</p>
+
+<p><input name="testBtn2" type="button" value="Click Me" /> to increment global variable in containing document (uses parent keyword to gain access).</p>
+</form>
+
+
+
+</body>
+</html>

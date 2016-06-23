@@ -1,0 +1,53 @@
+/* styles for iframed document */
+
+* { margin:0; padding:0; }
+
+body {
+    font: 14px/1.4 verdana, arial, helvetica, sans-serif;
+    padding:8px;
+}
+h1 {
+    font-size:1.2em;
+    margin:0 0 .7em 0;
+    }
+h2 {
+    font-size:1.1em;
+    margin:0 0 .7em 0;
+}
+p {
+    margin: .5em 0 .8em 0;
+}
+a:link { color:#33c; }
+a:visited { color:#339; }
+
+    
+pre {
+    /* list of fonts from stackoverflow */
+    font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono',
+            'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+    color:#a33;
+    margin: .5em 0 1em 0; 
+}
+code { 
+    font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono',
+            'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+    color:#a33;
+}
+
+span.news { 
+    font-style:italic; 
+    font-weight:bold; 
+}
+
+ul {
+    margin: 0 0 .8em;
+    padding: 0 0 0 1em;
+}
+
+ul li {
+    margin: 0 0 .2em 0;
+}
+
+input[type=submit], input[type=button], input[type=reset] {
+    padding:1px 4px;
+}

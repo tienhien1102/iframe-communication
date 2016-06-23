@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Untitled</title>
+<style type="text/css">
+body { 
+    font: 14px/1.3 verdana, arial, helvetica, sans-serif;
+    background-color:#eee; 
+    }
+h1 { 
+    font-size:18px; 
+    text-align:center; 
+    margin:0 0 .5em 0; 
+    }
+a:link { color:#33c; }
+a:visited { color:#339; }	
+</style>
+</head>
+<body>
+
+<h1>A Centered Fluid Iframe</h1>
+
+<p>Styles can be used to size and center the iframe horizontally using percentage width and margin auto, adding text-align center on the body for old versions of Internet Explorer if you like.</p>
+
+<p>JavaScript is used to size and position the iframe vertically. Resize your browser window to see the iframe resized and repositioned accordingly.</p>
+
+<pre>
+function setIframeHeight(id, h) {
+    var ifrm = document.getElementById(id);
+    if (ifrm) {
+        var winHt = dw_getWindowDims().height;
+        ifrm.style.height = Math.round( h * winHt ) + "px";
+        ifrm.style.marginTop = Math.round( ( winHt - parseInt(ifrm.style.height) )/2 ) + &quot;px&quot;;
+    }
+}
+
+window.onload = function() { setIframeHeight('ifrm', .8); }
+window.onresize = function() { setIframeHeight('ifrm', .8); }
+</pre>
+
+
+<p>Since the code is only interacting with the iframe element and not with the document inside the iframe, there is no cross-domain security restriction on this code, so you could load an external file, assuming that page does not contain code which will violate those restrictions.</p>
+
+</body>
+</html>

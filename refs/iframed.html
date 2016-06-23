@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>untitled</title>
+<link rel="stylesheet" href="../css/iframed.css" type="text/css" />
+<style type="text/css">
+h1 {
+    float: right;
+    width: 8em;
+    text-align: right;
+    margin: 0 .5em 0 0;
+}
+
+</style>
+<script type="text/javascript">
+// example variable and function for cross-document demo
+counter = 0;
+
+function clearGreeting() {
+    document.forms['iframeDemoForm'].elements['greeting'].value = '';
+}
+</script>
+</head>
+<body>
+
+<h1>Iframe</h1>
+
+<ul>
+    <li>Button 1 sets iframe style height</li>
+    <li>Button 2 increments global variable in iframed document</li>
+    <li>Button 3 transfers Greeting below to Display text box</li>
+    <li>Button 4 clears Greeting text box below (calls function in iframe)</li>
+</ul>
+
+<form action="#" id="iframeDemoForm">
+    <label for="greeting">Enter a Greeting: </label>
+    <input type="text" name="greeting" id="greeting" value="Hello there!" />
+</form>
+
+</body>
+</html>

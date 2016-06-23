@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../css/iframed.css" type="text/css" />
+</head>
+<body>
+
+<h1>JavaScript to Load Iframes</h1>
+
+<p>There are three ways to load a new document into an iframe using JavaScript. The first uses <code>document.getElementById</code> to reference the iframe element and assigns a new URL to its <code>src</code> property.</p>
+
+<pre>
+var el = document.getElementById('ifrm');
+el.src = url;
+</pre>
+
+
+<p>A second alternative uses the frames array to obtain a reference to the iframe window and assigns the new URL to its location property.</p>
+
+<pre>
+window.frames['ifrm'].location = url;
+</pre>
+
+<p>A third alternative uses the <code>location.replace</code> method in order to avoid having the new URL added to the browser history.</p>
+
+<pre>
+window.frames['ifrm'].location.replace(url);
+</pre>
+
+
+</body>
+</html>

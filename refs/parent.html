@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<style type="text/css">
+iframe#ifrm {
+    width:650px;
+    height:200px;
+    border:1px solid #ccc;
+    margin:1em 0 .6em;
+}
+</style>
+<script type="text/javascript">
+var counter = 0;
+
+function clearGreeting() {
+    document.forms['demoForm'].elements['greeting'].value = '';
+}
+</script>
+</head>
+<body>
+    
+<h1>References from Iframed Document to its Parent</h1>
+
+<p>This example demonstrates access from iframed document to containing document.</p>
+
+
+<iframe name="ifrm" id="ifrm" src="parented.html"></iframe>
+
+<form action="#" id="demoForm">
+    <label for="greeting">Enter a Greeting: </label>
+    <input type="text" name="greeting" id="greeting" value="Hello there!" />
+</form>
+
+<p class="end">Back to <a href="index.html">Cross-Doc Index</a> | <a href="../index.html">Iframes Examples Index</a></p>
+
+</body>
+</html>

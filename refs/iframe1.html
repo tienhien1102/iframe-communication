@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>untitled</title>
+<link rel="stylesheet" href="../css/iframed.css" type="text/css" />
+<style type="text/css">
+h1 {
+    float: right;
+    width: 12em;
+    text-align: right;
+    margin: 0 .5em 0 0;
+}
+</style>
+</head>
+<body>
+
+<h1>Iframe 1</h1>
+
+<form id="iframe1DemoForm" action="#">
+            
+    <p>Display: <input type="text" name="display" size="30" readonly="readonly" /></p>
+    <p><input name="button1" type="button" value="Click Me" /> to set height of iframe 2</p>
+    
+    <p><input name="button2" type="button" value="Click Me" /> repeatedly to increment global variable in iframe 2</p>
+    
+    <p><input name="button3" type="button" value="Click Me" /> to transfer Greeting in iframe 2 to text box above</p>
+    
+    <p><input name="button4" type="button" value="Click Me" /> to empty Greeting text box in iframe 2 (calls function in iframe 2)</p>
+    
+</form>
+
+
+<script type="text/javascript">
+// to be sure other iframe loaded
+parent.window.onload = function() {
+
+    // get reference to form to attach button onclick handlers
+    var form = document.getElementById('iframe1DemoForm');
+    
+    form.elements.button1.onclick = function() {
+        // reference to iframe 2
+        var ifrm = parent.document.getElementById('ifrm2');
+        
+        // set height of iframe 2
+        var ht = ifrm.style.height = '100px';
+        this.form.elements.display.value = 'Iframe 2 height is: ' + ht;
+        
+        // show in iframe 2 display text box
+        var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+        // reference to display text box
+        var fld = doc.forms['iframe2DemoForm'].elements['display'];
+        fld.value = 'My height is now: ' + ht;
+    }
+    
+    // increment and display counter variable contained in iframe 2
+    form.elements['button2'].onclick = function() {
+        // get reference to iframe 2
+        var ifrm = parent.document.getElementById('ifrm2');
+        var win = ifrm.contentWindow; // reference to iframe 2 window
+        var counter = ++win.counter; // increment
+        this.form.elements['display'].value = 'counter in iframe 2 is: ' + counter;
+        
+        // show in iframe 2 display text box
+        var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+        // reference to display text box
+        var fld = doc.forms['iframe2DemoForm'].elements['display'];
+        fld.value = 'My counter variable is: ' + counter;
+        
+    }
+    
+    form.elements.button3.onclick = function() {
+        var re = /[^-a-zA-Z!,'?\s]/g; // to filter out unwanted characters
+        // reference to iframe 2
+        var ifrm = parent.document.getElementById('ifrm2');
+        // reference to document in iframe 2
+        var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+        // get reference to greeting text box in iframe 2
+        var fld = doc.forms['iframe2DemoForm'].elements['greeting'];
+        var val = fld.value.replace(re, '');
+        // display value 
+        this.form.elements.display.value = 'The greeting is: ' + val;
+    }
+    
+    form.elements.button4.onclick = function() {
+        // get reference to iframe 2 window
+        var win = parent.document.getElementById('ifrm2').contentWindow;
+        win.clearGreeting(); // call function in iframe 2 document
+    }
+}
+</script>
+
+</body>
+</html>

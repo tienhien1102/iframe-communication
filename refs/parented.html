@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>untitled</title>
+<link rel="stylesheet" href="../css/iframed.css" type="text/css" />
+<style type="text/css">
+h1 {
+    float: right;
+    width: 10em;
+    text-align: right;
+    margin: 0 .5em 0 0;
+}
+</style>
+</head>
+<body>
+
+<h1>Iframe</h1>
+
+<form action="#" id="iframeDemoForm">
+    
+    <p><input type="text" name="display" size="30" readonly="readonly" /></p>
+    <p><input name="button1" type="button" value="Click Me" /> to see offsetHeight of iframe element containing this document</p>
+    
+    <p><input name="button2" type="button" value="Click Me" /> repeatedly to increment global variable in containing document</p>
+    
+    <p><input name="button3" type="button" value="Click Me" /> to transfer Greeting below to text box above</p>
+    
+    <p><input name="button4" type="button" value="Click Me" /> to empty Greeting text box below (calls function in parent)</p>
+
+</form>
+
+
+
+<script type="text/javascript">
+// to remove from global namespace
+(function() {
+
+    // get reference to form to attach button onclick handlers
+    var form = document.getElementById('iframeDemoForm');
+    
+    // display offsetHeight of frameElement containing iframed document
+    form.elements.button1.onclick = function() {
+        this.form.elements.display.value = window.frameElement.offsetHeight;
+    }
+    
+    // increment and display counter variable contained in parent document
+    form.elements['button2'].onclick = function() {
+        parent.counter++;
+        this.form.elements['display'].value = 'counter in parent document is: ' + parent.counter;
+    }
+    
+    form.elements.button3.onclick = function() {
+        var re = /[^-a-zA-Z!,'?\s]/g; // to filter out unwanted characters
+        // get reference to greeting text box in containing document
+        var fld = parent.document.forms['demoForm'].elements['greeting'];
+        var val = fld.value.replace(re, '');
+        // display value in iframed document's text box
+        this.form.elements.display.value = 'The greeting is: ' + val;
+    }
+    
+    form.elements.button4.onclick = function() {
+        parent.clearGreeting(); // call function in parent document
+    }
+    
+})(); // end remove from global namespace and invoke
+    
+</script>
+
+</body>
+</html>

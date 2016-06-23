@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>untitled</title>
+</head>
+<body>
+
+<h3>Code Instructions in Brief</h3>
+
+<p>Define both an iframe and a display div in your markup:</p>
+
+<pre>
+&lt;div id=&quot;display&quot;&gt;&lt;/div&gt;
+&lt;iframe id=&quot;buffer&quot; name=&quot;buffer&quot; src=&quot;hidden1.html&quot;
+  onload=&quot;dw_Loader.display()&quot;&gt;&lt;/iframe&gt;
+</pre>
+
+
+
+<p>For accessibility, iframe styles can be written using JavaScript and target attributes included in the links:</p>
+
+<pre>
+&lt;a href=&quot;yourpage.html&quot; target=&quot;buffer&quot;&gt;link&lt;/a&gt;
+</pre>
+
+<p>Include a script tag for the very small external JavaScript file <a href="js/dw_loader.js">dw_loader.js</a>. The code includes the following settings and options:</p>
+
+<pre>
+    loadMsg: 'Retrieving data ...',
+    displayID: 'display', // default id for display div
+    iframeID: 'buffer', // default id for hidden iframe
+    bReplace: false, // to use location.replace (no history support)
+    bScrollToTop: false, // page scroll to top when new content is loaded?
+</pre>
+
+<p>An example link with the onclick attribute and optional parameters:</p>
+
+<pre>
+&lt;a href=&quot;yourpage.html&quot; target=&quot;buffer&quot;
+  onclick=&quot;return dw_Loader.load(this.href, 
+    'ifrm', // iframe id
+    'ifrmDiv', // id of div where iframe contents displayed
+    ifrmCallback // function to call after contents transferred to div
+    )&quot;&gt;link&lt;/a&gt;
+</pre>
+
+
+<p>The code has been tested successfully on Firefox, Chrome, Internet Explorer 5.5+, Opera and Safari. </p>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<style type="text/css">
+iframe#ifrm {
+    border:1px solid #ccc;
+    width:600px; height:100px;
+    }
+</style>
+<script type="text/javascript">
+/* free code from dyn-web.com */
+
+function getDocHeight(doc) {
+    doc = doc || document;
+    // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
+    var body = doc.body, html = doc.documentElement;
+    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+        html.clientHeight, html.scrollHeight, html.offsetHeight );
+    return height;
+}
+
+function setIframeHeight(id) {
+    var ifrm = document.getElementById(id);
+    var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+    ifrm.style.visibility = 'hidden';
+    ifrm.style.height = "10px"; // reset to minimal height in case going from longer to shorter doc
+    ifrm.style.height = getDocHeight( doc ) + "px";
+    ifrm.style.visibility = 'visible';
+}
+</script>
+</head>
+<body>
+
+<h1>Setting Iframe Element Height to Iframe Content Height</h1>
+
+<p>This example set the height of an iframe to match the height of its content so that regular window scrollbars are used instead of iframe scrollbars. Click the links below for a demonstration and more information.</p>
+
+<p><strong>Note:</strong> Run this example under a server to avoid possible JavaScript security-related error messages in Chrome.</p>
+
+<ul id="demo">
+    <li><a href="height1.html" target="ifrm">Introduction</a> </li>
+    <li><a href="height2.html" target="ifrm">The Code</a></li>
+    <li><a href="height3.html" target="ifrm">Access Denied?</a></li>
+</ul>
+
+<iframe id="ifrm" name="ifrm" src="height1.html" onload="setIframeHeight(this.id)">Sorry, your browser doesn't support iframes.</iframe>
+
+<p>Back to <a href="../index.html">Iframes Examples</a></p>
+
+</body>
+</html>

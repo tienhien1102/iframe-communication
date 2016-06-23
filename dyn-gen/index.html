@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<style type="text/css">
+iframe#ifrm {
+    width:400px;
+    height:150px;
+    border:1px solid #ccc;
+    margin: 4px 0 6px;
+}
+</style>
+</head>
+<body>
+    
+<h1>Dynamically Generating an Iframe</h1>
+
+
+<p id="marker" class="end">Back to <a href="../index.html">Iframes Examples</a></p>
+
+
+<script type="text/javascript">
+// to remove from global namespace
+(function() {
+    
+    var ifrm = document.createElement('iframe');
+    ifrm.setAttribute('id', 'ifrm');
+    
+    //document.body.appendChild(ifrm); // to place at end of document
+    
+    // to place before another page element
+    var el = document.getElementById('marker');
+    el.parentNode.insertBefore(ifrm, el);
+    
+    ifrm.setAttribute('src', 'demo.html');
+    
+})(); // end remove from global namespace and invoke
+</script>
+</body>
+</html>

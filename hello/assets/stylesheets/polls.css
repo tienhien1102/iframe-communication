@@ -1,0 +1,23 @@
+#info { 
+    height: 40px; 
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+    background-color: rgba(57, 56, 56, 0.72);
+    color: #ffffff;
+    opacity: 1;
+    z-index: 999 !important;
+}
+.notifi{
+	color: #ffffff;
+	font-size: 14px;
+}
+input[name="apcept"]{
+   background-color: rgb(13, 234, 13) !important;
+   color: #ffffff;
+}
+
+input[name="cancel"]{
+  background-color: rgba(247, 0, 0, 0.82) !important;
+  color: #ffffff;
+}

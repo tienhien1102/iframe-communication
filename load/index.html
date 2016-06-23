@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<style type="text/css">
+iframe#ifrm {
+    border:1px solid #ccc;
+    width:600px; height:260px;
+    margin:1em 0;
+    }   
+</style>
+</head>
+<body>
+
+<h1>Loading New Documents into Iframes</h1>
+
+<p>The links below load new documents into the iframe. Each of these pages provides additional information on the subject.</p>
+  
+  
+<ul>
+    <li><a href="links.html" target="ifrm">Links</a></li>
+    <li><a href="code.html" target="ifrm">JavaScript</a></li>
+    <li><a href="http://www.sharonscode.com/demos/iframes/external.html" target="ifrm">External</a></li>
+</ul>
+
+
+<iframe name="ifrm" id="ifrm" src="links.html">Your browser doesn't support iframes.</iframe>
+
+
+<p>The three methods discussed in the <a href="code.html" target="ifrm">JavaScript</a> page are contained at the end of this document. This <a href="code.html" target="ifrm" onclick="setIframeSrc('ifrm', this.href); return false">link</a> demonstrates.</p>
+
+
+<p>Back to <a href="../index.html">Iframes Examples</a></p>
+
+
+<script type="text/javascript">
+// 3 ways to load a document into an iframe using JavaScript 
+// from http://www.dyn-web.com/tutorials/iframes/load/
+function setIframeSrc(id, url) {
+    document.getElementById(id).src = url;
+}
+
+function setIframeLoc(nm, url) {
+    window.frames[nm].location = url;
+}
+
+function replaceIframeURL(nm, url) {
+    window.frames[nm].location.replace(url);
+}
+
+// can call like so:
+// setIframeSrc('ifrm', 'code.html');
+</script>
+</body>
+</html>

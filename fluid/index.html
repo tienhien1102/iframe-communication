@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+<style type="text/css">
+body { 
+    font: 14px/1.3 verdana, arial, helvetica, sans-serif; 
+    text-align:center; /* for old ie */
+    }
+iframe#ifrm { 
+    width:80%;
+    margin: auto;
+    border:1px solid #d0d0d0;
+    }
+a:link { color:#33c; }    
+a:visited { color:#339; }    
+</style>
+<script type="text/javascript">
+/**********************************
+  Free code from dyn-web.com 
+***********************************/
+
+function dw_getWindowDims() {
+    var doc = document, w = window;
+    var docEl = (doc.compatMode && doc.compatMode === 'CSS1Compat')? doc.documentElement: doc.body;
+    
+    var width = docEl.clientWidth;
+    var height = docEl.clientHeight;
+    
+    // mobile zoomed in?
+    if ( w.innerWidth && width > w.innerWidth ) {
+        width = w.innerWidth;
+        height = w.innerHeight;
+    }
+    
+    return {width: width, height: height};
+}
+
+// arguments: iframe id, height  (e.g., .5 for height="50%")
+function setIframeHeight(id, h) {
+    var ifrm = document.getElementById(id);
+    if (ifrm) {
+        var winHt = dw_getWindowDims().height;
+        ifrm.style.height = Math.round( h * winHt ) + "px";
+        ifrm.style.marginTop = Math.round( ( winHt - parseInt(ifrm.style.height) )/2 ) + "px";
+    }
+}
+
+// for sizing and positioning the iframe in the window
+// pass iframe id and height (e.g., .5 for height="50%")
+window.onload = function() { setIframeHeight('ifrm', .8); }
+window.onresize = function() { setIframeHeight('ifrm', .8); }
+
+</script>
+</head>
+<body>
+
+<iframe id="ifrm" src="fluid.html">Your browser does not support iframes.</iframe>
+
+<p>Back to <a href="../index.html">Iframes Examples</a></p>
+
+</body>
+</html>

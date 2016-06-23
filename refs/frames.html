@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<style type="text/css">
+iframe#ifrm {
+    width:650px;
+    height:180px;
+    border:1px solid #ccc;
+    margin:1em 0 .6em;
+}
+</style>
+</head>
+<body>
+
+<h1>References to Iframes Using the Frames Array</h1>
+
+
+<p>This example demonstrates access to an iframed document using frames array references.</p>
+    
+<form id="demoForm" action="#">
+    
+    <p>
+        <input name="button1" type="button" value="Button 1" />
+        <input name="button2" type="button" value="Button 2" /> 
+        <input name="button3" type="button" value="Button 3" /> 
+    </p>
+    
+    <p>Display: <input type="text" name="display" size="30" readonly="readonly" /></p>
+    
+</form>
+
+
+<iframe name="ifrm" id="ifrm" src="framed.html"></iframe>
+
+
+<script type="text/javascript">
+// attach handlers once iframe is loaded
+document.getElementById('ifrm').onload = function() {
+
+    // get reference to form to attach button onclick handlers
+    var form = document.getElementById('demoForm');
+    
+    // increment and display counter variable contained in iframed document
+    form.elements['button1'].onclick = function() {
+        var win = window.frames['ifrm']; // reference to iframe window
+        var counter = ++win.counter; // increment
+        this.form.elements.display.value = 'counter in iframed doc is: ' + counter;
+    }
+    
+    form.elements.button2.onclick = function() {
+        var re = /[^-a-zA-Z!,'?\s]/g; // to filter out unwanted characters
+        var win = window.frames['ifrm']; // reference to iframe window
+        // get reference to greeting text box in iframed document
+        var fld = win.document.forms['iframeDemoForm'].elements['greeting'];
+        var val = fld.value.replace(re, '');
+        // display value in text box
+        this.form.elements.display.value = 'The greeting is: ' + val;
+    }
+    
+    form.elements.button3.onclick = function() {
+        window.frames['ifrm'].clearGreeting(); // call function in iframed document
+    }
+}
+</script>
+
+<p class="end">Back to <a href="index.html">Cross-Doc Index</a> | <a href="../index.html">Iframes Examples Index</a></p>
+
+</body>
+</html>
